@@ -1,13 +1,73 @@
+/* general */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+/* nav bar */
+.logo {
+    width: 70px;
+    height: 70px;
+}
+
+.nav-style {
+    background: black;
+}
+
+.search input {
+    height: 40px;
+    text-indent: 25px;
+    border-radius: 20px;
+}
+
+.fa-search {
+    background: #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 0px;
+}
+
+.relative {
+    position: relative;
+}
+
+/* Cart Movie */
+
+.card {
+    position: relative;
+    cursor: pointer;
+    border: 1px solid;
+    height: 400px;
+}
+
+.card-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border: 1px solid #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.card-overlay:hover {
+    opacity: 1;
+}
+
+img {
+    width: 100%;
+    height:100%;
 }
