@@ -3,6 +3,9 @@ import { Row } from "react-bootstrap";
 import CartMovie from "./CartMovie";
 
 const MoviesList = ({ films }) => {
+
+    // console.log(films.id)
+
     return (
         <Row className=" d-flex ">
             {films.length > 0 ? (
