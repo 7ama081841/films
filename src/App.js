@@ -12,30 +12,29 @@ function App() {
     // get data
     const getData = async () => {
         const res = await axios.get("https://api.tvmaze.com/schedule/full");
-        // const res = await axios.get("https://api.tvmaze.com/episodes/2525519");
-        // setFilms(res.data.map((items) => items._embedded.show));
+
         setFilms(res.data);
-        // console.log(res.data)
-        // console.log(res.data.map( item => item.id ))
-    };
-
-    const searchFilms = async (word) => {
-        if (word === "") {
-            getData();
-        } else {
-            const res = await axios.get(
-                `https://api.tvmaze.com/search/shows?q=${word}`
-            );
-
-            // setFilms(res.data.map((items) => items.show));
-            // setFilms(res.data);
-            // console.log(res.data);
-        }
+        // console.log(res.data);
     };
 
     useEffect(() => {
         getData();
-    });
+    } , []);
+
+    const searchFilms = (word) => {
+        if (word === "") {
+            getData();
+        } else {
+            const filteredFilms = films.filter((item) =>
+                item._embedded.show.name
+                    .toLowerCase()
+                    .includes(word.toLowerCase())
+            );
+
+            setFilms(filteredFilms);
+            console.log(films);
+        }
+    };
 
     return (
         <div className="App">
