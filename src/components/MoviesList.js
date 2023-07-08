@@ -6,28 +6,21 @@ import { getAllMovies } from "../redux/actions/movieAction";
 
 const MoviesList = () => {
     const [films, setFilms] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllMovies())
-            .then(() => setIsLoading(false))
-            .catch((error) => {
-                console.log(error);
-                setIsLoading(false);
-            });
+        dispatch(getAllMovies()).catch((error) => {
+            console.log(error);
+        });
     }, []);
 
     const dataMovies = useSelector((state) => state.movies);
 
-    // console.log(dataMovies);
-
     useEffect(() => {
         setFilms(dataMovies.movies);
-    }, [dataMovies, isLoading]);
+    }, [dataMovies]);
 
-    console.log({films : films});
     return (
         <Row className=" d-flex ">
             {films.length > 0 ? (
