@@ -33,8 +33,6 @@ const MovieDetails = () => {
         getDetails();
     }, []);
 
-    // console.log(dataDetails);
-    // console.log(dataDetails?.genres.map( item => item ));
     console.log(dataDetails?.officialSite);
 
     return (
@@ -42,15 +40,19 @@ const MovieDetails = () => {
             <Row className="justify-content-center">
                 <Col md="12" xs="12" sm="12" className="mt-4">
                     <div className=" card-details d-flex align-items-center ">
-                        <img
-                            className="img-details w-30 "
-                            src={
-                                dataDetails?.image.original !== undefined
-                                    ? dataDetails.image.original
-                                    : image
-                            }
-                            alt="image"
-                        />
+                        {dataDetails?.image.original !== undefined ? (
+                            <img
+                                className="img-details w-30 "
+                                src={dataDetails.image.original}
+                                alt="image"
+                            />
+                        ) : (
+                            <img
+                                className="img-details w-30 "
+                                src={image}
+                                alt="image"
+                            />
+                        )}
 
                         <div className=" justify-content-center text-center mx-auto ">
                             <p className="card-text-details border-bottom ">
@@ -93,3 +95,7 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
+
+// dataDetails?.image.original !== undefined
+//                                     ? dataDetails.image.original
+//                                     : image

@@ -1,10 +1,9 @@
 import React from "react";
-import { Col, NavLink } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import image from "../images/Film-App-Logo.png";
 import { Link } from "react-router-dom";
 
 const CartMovie = ({ items }) => {
-    //cmder.app/
     return (
         <Col xs="6" sm="6" md="4" lg="3" className="my-1">
             <Link to={`/movei/${items.id}`}>

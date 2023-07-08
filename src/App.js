@@ -3,54 +3,61 @@ import { Container } from "react-bootstrap";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import MoviesList from "./components/MoviesList";
-import axios from "axios";
+
 import MovieDetails from "./components/MovieDetails";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMovies } from "./redux/actions/movieAction";
+
 function App() {
-    const [films, setFilms] = useState([]);
+    // const [films, setFilms] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // get data
-    const getData = async () => {
-        const res = await axios.get("https://api.tvmaze.com/schedule/full");
-
-        setFilms(res.data);
-        // console.log(res.data);
-    };
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        getData();
-    } , []);
+        dispatch(getAllMovies())
+            .then(() => setIsLoading(false))
+            .catch((error) => {
+                console.log(error);
+                setIsLoading(false);
+            });
+    }, []);
 
-    const searchFilms = (word) => {
-        if (word === "") {
-            getData();
-        } else {
-            const filteredFilms = films.filter((item) =>
-                item._embedded.show.name
-                    .toLowerCase()
-                    .includes(word.toLowerCase())
-            );
+    // const dataMovies = useSelector((state) => state.movies);
 
-            setFilms(filteredFilms);
-            console.log(films);
-        }
-    };
+    //     useEffect(() => {
+    //         if (!isLoading) {
+    //             setFilms(dataMovies.movies?.data || []);
+    //         }
+    //     }, [dataMovies, isLoading]);
+
+    // const searchFilms = (word) => {
+    //     if (word === "") {
+    //         dispatch(getAllMovies());
+    //     } else {
+    //         const filteredFilms = films.filter((item) =>
+    //             item._embedded.show.name
+    //                 .toLowerCase()
+    //                 .includes(word.toLowerCase())
+    //         );
+
+    //         setFilms(filteredFilms);
+    //         // console.log(films);
+    //     }
+    // };
 
     return (
         <div className="App">
             <BrowserRouter>
                 <NavBar
-                    films={films}
-                    setFilms={setFilms}
-                    searchFilms={searchFilms}
+                // films={films}
+                // setFilms={setFilms}
+                // searchFilms={searchFilms}
                 />
                 <Container>
                     <Routes>
-                        <Route
-                            exact
-                            path="/"
-                            element={<MoviesList films={films} />}
-                        />
+                        <Route exact path="/" element={<MoviesList />} />
                         <Route
                             exact
                             path="/movei/:id"
