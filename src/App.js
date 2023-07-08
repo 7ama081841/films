@@ -6,11 +6,10 @@ import MoviesList from "./components/MoviesList";
 
 import MovieDetails from "./components/MovieDetails";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllMovies } from "./redux/actions/movieAction";
 
 function App() {
-    // const [films, setFilms] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const dispatch = useDispatch();
@@ -24,37 +23,10 @@ function App() {
             });
     }, []);
 
-    // const dataMovies = useSelector((state) => state.movies);
-
-    //     useEffect(() => {
-    //         if (!isLoading) {
-    //             setFilms(dataMovies.movies?.data || []);
-    //         }
-    //     }, [dataMovies, isLoading]);
-
-    // const searchFilms = (word) => {
-    //     if (word === "") {
-    //         dispatch(getAllMovies());
-    //     } else {
-    //         const filteredFilms = films.filter((item) =>
-    //             item._embedded.show.name
-    //                 .toLowerCase()
-    //                 .includes(word.toLowerCase())
-    //         );
-
-    //         setFilms(filteredFilms);
-    //         // console.log(films);
-    //     }
-    // };
-
     return (
         <div className="App">
             <BrowserRouter>
-                <NavBar
-                // films={films}
-                // setFilms={setFilms}
-                // searchFilms={searchFilms}
-                />
+                <NavBar />
                 <Container>
                     <Routes>
                         <Route exact path="/" element={<MoviesList />} />

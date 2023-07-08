@@ -5,7 +5,6 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import { movieReducer } from "../reducer/movieReducer";
-// import { composeWithDevTools } from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
     movies: movieReducer,

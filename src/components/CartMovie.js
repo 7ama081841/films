@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 const CartMovie = ({ items }) => {
 
-    console.log({ CartMovie : items === items._embedded? "_embedded" : "show"  })
-
     return items._embedded ? (
         <Col xs="6" sm="6" md="4" lg="3" className="my-1">
             <Link to={`/movei/${items.id}`}>

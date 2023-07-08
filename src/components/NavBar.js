@@ -11,11 +11,9 @@ const NavBar = () => {
     const search_Movies = (keyword) => {
         if (keyword === "") {
             dispatch(getAllMovies());
-            console.log("getAllMovies");
         } else {
             dispatch(searchMovies(keyword));
-            console.log("searchMovies");
-        } 
+        }
     };
 
     return (

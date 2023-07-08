@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ALLMOVIE, SEARCHMOVIE } from "../types/typeMovie";
+import { ALLMOVIE } from "../types/typeMovie";
 
 export const getAllMovies = () => async (dispatch) => {
     try {

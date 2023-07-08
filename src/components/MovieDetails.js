@@ -33,8 +33,6 @@ const MovieDetails = () => {
         getDetails();
     }, []);
 
-    console.log(dataDetails?.officialSite);
-
     return (
         <div>
             <Row className="justify-content-center">
